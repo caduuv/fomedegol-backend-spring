@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,6 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Relation(collectionRelation = "usuarios", itemRelation = "usuario")
 public class UsuarioDTO extends RepresentationModel<UsuarioDTO> implements Serializable {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)

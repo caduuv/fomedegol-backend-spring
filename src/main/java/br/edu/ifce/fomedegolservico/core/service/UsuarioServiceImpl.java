@@ -61,7 +61,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Override
     public Usuario update(Long id, Usuario usuario) {
-        return null;
+
+        usuario.setSequencial(id);
+        return usuarioRepository.save(usuario);
+
     }
 
     @Override

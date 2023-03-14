@@ -1,12 +1,12 @@
 package br.edu.ifce.fomedegolservico.v1.advice;
 
 import br.edu.ifce.fomedegolservico.core.enums.ConstraintsBaseDados;
-import br.edu.ifce.fomedegolservico.core.enums.SqlState;
 import br.edu.ifce.fomedegolservico.core.exception.MessageExceptionHandler;
 import br.edu.ifce.fomedegolservico.core.exception.MessageExceptionHandlerBuilder;
 import br.edu.ifce.fomedegolservico.core.exception.NenhumRegistroEncontradoException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,17 +14,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 @ControllerAdvice(basePackages = "br.edu.ifce.fomedegolservico")
 public class UsuarioControllerAdvice {
 
+    @Autowired
     private MessageExceptionHandlerBuilder exceptionHandlerBuilder;
-
-    public UsuarioControllerAdvice(){
-        this.exceptionHandlerBuilder = new MessageExceptionHandlerBuilder();
-    }
 
     @ResponseBody
     @ExceptionHandler(NenhumRegistroEncontradoException.class)
