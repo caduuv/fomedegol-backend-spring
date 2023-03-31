@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cartoes_credito")
 @Getter
 @Setter
-public class CartaoCredito {
+public class CartaoCredito implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

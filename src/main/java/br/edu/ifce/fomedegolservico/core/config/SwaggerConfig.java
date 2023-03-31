@@ -28,7 +28,7 @@ public class SwaggerConfig{
 
     private ApiInfo metaInfo() {
 
-        ApiInfo apiInfo = new ApiInfo(
+        return new ApiInfo(
                 "Fome de Gol- RestFUL API",
                 "API RestFul Desenvolvida em SpringBoot para servir às interfaces do Fome de Gol",
                 "1.0",
@@ -38,8 +38,6 @@ public class SwaggerConfig{
                 "Apache License Version 2.0",
                 "https://www.apache.org/licesen.html", new ArrayList<>()
         );
-
-        return apiInfo;
     }
 
 

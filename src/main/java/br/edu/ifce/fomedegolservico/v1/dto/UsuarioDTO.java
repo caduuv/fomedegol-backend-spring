@@ -2,13 +2,9 @@ package br.edu.ifce.fomedegolservico.v1.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.persistence.Column;
 import javax.validation.constraints.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
@@ -18,6 +14,7 @@ import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Getter
 @Setter
 @Relation(collectionRelation = "usuarios", itemRelation = "usuario")

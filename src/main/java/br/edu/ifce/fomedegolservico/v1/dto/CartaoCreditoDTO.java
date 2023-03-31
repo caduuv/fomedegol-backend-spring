@@ -1,10 +1,8 @@
 package br.edu.ifce.fomedegolservico.v1.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
@@ -15,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -35,6 +34,7 @@ public class CartaoCreditoDTO extends RepresentationModel<CartaoCreditoDTO> impl
     @NotNull
     @DecimalMin(value = "0", message = "O CVV deve ser maior que 0")
     @DecimalMax(value = "999", message = "O CVV deve ter no máximo 3 dígitos")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private BigDecimal cvv;
 
     @NotBlank(message = "O nome do titular é obrigatório")
@@ -50,5 +50,7 @@ public class CartaoCreditoDTO extends RepresentationModel<CartaoCreditoDTO> impl
     private BigDecimal anoValidade;
 
     private String apelido;
+
+
 
 }

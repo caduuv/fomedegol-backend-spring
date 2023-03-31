@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -37,5 +38,8 @@ public class Usuario implements Serializable {
 
     @Column(name = "telefone")
     private Long telefone;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sequencialUsuario")
+    private List<CartaoCredito> cartoesCredito;
 
 }

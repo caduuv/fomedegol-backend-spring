@@ -14,7 +14,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuario, UsuarioDTO> {
+public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuario, UsuarioDTO>{
 
     @Autowired
     private ModelMapper modelMapper;
@@ -26,7 +26,9 @@ public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuar
         dto.add(linkTo(methodOn(UsuarioController.class).findById(entity.getSequencial())).withSelfRel().withType("GET"));
         dto.add(linkTo(methodOn(UsuarioController.class).update(entity.getSequencial(), dto)).withSelfRel().withType("PUT"));
         dto.add(linkTo(methodOn(UsuarioController.class).delete(entity.getSequencial())).withSelfRel().withType("DELETE"));
-        dto.add(linkTo(methodOn(UsuarioController.class).findAll(0, 20, "nome", true, "sequencial")).withRel(IanaLinkRelations.COLLECTION));
+        dto.add(linkTo(methodOn(UsuarioController.class).findAll(0, 20, "nome", true, "")).withRel(IanaLinkRelations.COLLECTION));
+
+        dto.add(linkTo(methodOn(UsuarioController.class).buscaCartoesCredito(entity.getSequencial(),0, 20)).withRel("cartoes-credito"));
 
         return dto;
     }
@@ -35,4 +37,11 @@ public class UsuarioModelAssembler implements RepresentationModelAssembler<Usuar
     public CollectionModel<UsuarioDTO> toCollectionModel(Iterable<? extends Usuario> entities) {
         return RepresentationModelAssembler.super.toCollectionModel(entities);
     }
+
+    public Usuario toEntity(UsuarioDTO dto){
+        return modelMapper.map(dto, Usuario.class);
+    }
+
+
+
 }

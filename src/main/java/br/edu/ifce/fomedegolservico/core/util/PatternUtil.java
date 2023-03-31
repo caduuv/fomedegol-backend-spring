@@ -3,6 +3,7 @@ package br.edu.ifce.fomedegolservico.core.util;
 import java.text.Normalizer;
 
 public class PatternUtil {
+    private PatternUtil() {}
 
     public static boolean isCPFValido(Long cpf){
         // Transforma o CPF em uma String de 11 dígitos com zeros à esquerda
